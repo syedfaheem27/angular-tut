@@ -13,4 +13,8 @@ import { user } from './interfaces/user';
 })
 export class AppComponent {
   users: user[] = DUMMY_USERS;
+
+  onSelectUser(id: string) {
+    console.log(this.users.find((user) => user.id === id));
+  }
 }
