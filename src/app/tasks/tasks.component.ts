@@ -2,11 +2,12 @@ import { Component, Input } from '@angular/core';
 import { TaskComponent } from './task/task.component';
 import { Task } from './task/task.model';
 import { Dummy_Tasks } from '../dummy-tasks';
+import { NewTaskComponent } from './new-task/new-task.component';
 
 @Component({
   selector: 'app-tasks',
   standalone: true,
-  imports: [TaskComponent],
+  imports: [TaskComponent, NewTaskComponent],
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.css',
 })
@@ -26,13 +27,10 @@ export class TasksComponent {
     this.tasks = this.tasks.filter((task) => task.id !== id);
   }
 
-  openAddTask() {
+  onOpenAddTask() {
     this.isAddTask = true;
   }
-  closeAddTask(event: Event) {
-    const el = event.target as HTMLElement;
-    if (el.closest('#dialog-form')) return;
-
+  onCancelAddTask() {
     this.isAddTask = false;
   }
 }

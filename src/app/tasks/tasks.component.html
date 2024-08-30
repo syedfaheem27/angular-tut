@@ -1,9 +1,13 @@
+@if(isAddTask){
+<app-new-task (closeDialog)="onCancelAddTask()" />
+}
+
 <section id="tasks">
   <header>
     <h2>{{ name }}'s tasks</h2>
   </header>
   <menu>
-    <button (click)="openAddTask()">Add Task</button>
+    <button (click)="onOpenAddTask()">Add Task</button>
   </menu>
 
   <ul>
@@ -14,42 +18,3 @@
     }
   </ul>
 </section>
-
-@if(isAddTask){
-<section
-  id="dialog"
-  style="
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    inset: 0;
-    background-color: rgba(128, 128, 128, 0.274);
-  "
-  (click)="closeAddTask($event)"
->
-  <form
-    id="dialog-form"
-    style="
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      padding: 3rem 1.6rem;
-      background-color: rgb(157, 0, 255);
-    "
-  >
-    <div style="flex-grow: 1; display: flex; gap: 2rem">
-      <label for="title">Task Title</label>
-      <input type="text" id="title" />
-    </div>
-    <div style="flex-grow: 1; display: flex; gap: 2rem">
-      <label for="summary">Task Summary</label>
-      <input type="text" id="summary" />
-    </div>
-    <div style="flex-grow: 1; display: flex; gap: 2rem">
-      <label for="due-date">Task due date</label>
-      <input type="date" id="due-date" />
-    </div>
-  </form>
-</section>
-}
