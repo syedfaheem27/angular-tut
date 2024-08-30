@@ -14,6 +14,8 @@ export class TasksComponent {
   @Input({ required: true }) name!: string;
   @Input({ required: true }) userId!: string;
 
+  isAddTask = false;
+
   tasks: Task[] = Dummy_Tasks;
 
   get selectedTasks() {
@@ -22,5 +24,15 @@ export class TasksComponent {
 
   onCompleteTask(id: string) {
     this.tasks = this.tasks.filter((task) => task.id !== id);
+  }
+
+  openAddTask() {
+    this.isAddTask = true;
+  }
+  closeAddTask(event: Event) {
+    const el = event.target as HTMLElement;
+    if (el.closest('#dialog-form')) return;
+
+    this.isAddTask = false;
   }
 }
