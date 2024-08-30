@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Output, signal } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { NewTask } from '../task/task.model';
+import { TasksService } from '../../services/tasks.service';
 
 @Component({
   selector: 'app-new-task',
@@ -11,7 +11,7 @@ import { NewTask } from '../task/task.model';
 })
 export class NewTaskComponent {
   @Output() close = new EventEmitter<void>();
-  @Output() addNew = new EventEmitter<NewTask>();
+  @Input({ required: true }) userId!: string;
 
   //Using signals
 
@@ -22,6 +22,8 @@ export class NewTaskComponent {
   title = '';
   summary = '';
   dueDate = '';
+
+  constructor(private tasksService: TasksService) {}
 
   closeAddTask() {
     this.close.emit();
@@ -40,7 +42,7 @@ export class NewTaskComponent {
       summary: this.summary,
       dueDate: this.dueDate,
     };
-
-    this.addNew.emit(newTask);
+    this.tasksService.addNewTask(newTask, this.userId);
+    this.closeAddTask();
   }
 }
