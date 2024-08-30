@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
 import { UserComponent } from './user/user.component';
 import { DUMMY_USERS } from './dummy-users';
-import { User } from './interfaces/user';
+import { User } from './user/user.model';
 import { TasksComponent } from './tasks/tasks.component';
 
 @Component({

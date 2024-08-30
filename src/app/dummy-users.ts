@@ -1,4 +1,4 @@
-import { User } from './interfaces/user';
+import { User } from './user/user.model';
 
 export const DUMMY_USERS: User[] = [
   {

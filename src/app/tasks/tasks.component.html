@@ -7,8 +7,10 @@
   </menu>
 
   <ul>
+    @for(task of selectedTasks;track task.id ){
     <li>
-      <app-task />
+      <app-task [task]="task" (complete)="onCompleteTask($event)" />
     </li>
+    }
   </ul>
 </section>

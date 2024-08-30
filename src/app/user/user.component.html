@@ -1,5 +1,5 @@
 <div>
-  <button (click)="onUserClick()">
+  <button [class.active]="selected" (click)="onUserClick()">
     <!-- <img
       src="assets/users/{{selectedUser.avatar}}"
 
